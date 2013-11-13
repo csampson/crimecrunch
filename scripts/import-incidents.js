@@ -9,7 +9,7 @@ var async = require('async'),
 mongoose.connect('mongodb://localhost/nola_crime_stats');
 
 function saveIncident(incident, callback) {
-  var originalProjection = '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs', // SR-ORG:6 
+  var originalProjection = '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=21350 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs', // SR-ORG:6 with rough northing offset
       newProjection = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs', // WGS84
       coordinates = proj4(originalProjection, newProjection, [incident.Y, incident.X]);
 
@@ -20,7 +20,7 @@ function saveIncident(incident, callback) {
     description: incident.Description,
     date: incident.DateReported,
     location: incident.Location,
-    coordinates: [ coordinates[1], coordinates[0] ]
+    coordinates: [ coordinates[0], coordinates[1] ]
   });
 
   incident.save(callback);

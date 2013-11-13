@@ -17,11 +17,13 @@ app.use(express.bodyParser());
 app.use(app.router);
 
 // development only
-if ('development' == app.get('env')) {
+if ('development' === app.get('env')) {
+  mongoose.set('debug', true);
   app.use(express.errorHandler());
 }
 
 app.get('/', routes.index);
+app.get('/incidents/:coordinates', routes.incidents);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Listening on port ' + app.get('port') + '.\n++ The Emperor protects. ++');

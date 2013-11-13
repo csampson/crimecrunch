@@ -9,7 +9,9 @@ var IncidentSchema = new Schema({
   description: String,
   date: Date,
   location: String,
-  coordinates: Array
+  coordinates: { type: Array, index: '2dsphere' }
 });
 
-module.exports = mongoose.model('Incident', IncidentSchema);
+var Incident = mongoose.model('Incident', IncidentSchema);
+
+module.exports = Incident;
