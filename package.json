@@ -10,6 +10,7 @@
     "ejs": "*",
     "mongoose": "3.6.x",
     "moment": "2.x",
+    "twix": "0.3.x",
     "proj4js": "*",
     "async": "*"
   }
