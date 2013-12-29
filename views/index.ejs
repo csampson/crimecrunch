@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='en-US' data-ng-app='crimeCrunch'>
+<head>
+  <meta charset='utf-8' />
+  <title>CrimeCrunch</title>
+  <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js'/></script>
+  <script src='/app.js'></script>
+  <script src='/controllers.js'></script>
+  <script src='/services.js'></script>
+</head>
+<body>
+  <header>
+    <h1>CrimeCrunch</h1>
+    <p>Analyze crime numbers for a given area</p>
+  </header>
+
+  <div class='crime-list' data-ng-controller='IncidentsListController'>
+    <button data-ng-click='getIncidents()' type='button'>V</button>
+
+    <ul class='incidents'>
+      <li data-ng-repeat='incident in incidents' class='incident'>
+        <span class='incident-label'>{{incident.label}}</span>
+        <span class='incident-count'>{{incident.count}}</span>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

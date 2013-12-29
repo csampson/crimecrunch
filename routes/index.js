@@ -1,18 +1,16 @@
 var Incident = require('../models/incident.js');
 
 exports.index = function(req, res) {
-  res.render('index', { title: 'NOLA Crime Stats' });
+  res.render('index');
 };
 
 exports.incidents = function(req, res) {
-  var coordinates = req.params.coordinates.split(',');
-
   Incident.find({
     'coordinates': {
       $near: {
         $geometry: {
           type: 'Point',
-          coordinates: [ parseFloat(coordinates[0]), parseFloat(coordinates[1]) ] // longitude, latitude
+          coordinates: [ parseFloat(req.query.longitude), parseFloat(req.query.latitude) ] // longitude, latitude
         }
       }, $maxDistance: 500
     }},

@@ -4,7 +4,7 @@ var express = require('express'),
     http = require('http'),
     path = require('path');
 
-mongoose.connect('mongodb://localhost/nola_crime_stats');
+mongoose.connect('mongodb://localhost/crime_crunch');
 
 var app = express(),
     db = mongoose.connection;
@@ -12,6 +12,8 @@ var app = express(),
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+
+app.use(express.static(__dirname + '/public'));
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(app.router);
@@ -23,7 +25,7 @@ if ('development' === app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/incidents/:coordinates', routes.incidents);
+app.get('/incidents', routes.incidents);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Listening on port ' + app.get('port') + '.\n++ The Emperor protects. ++');
