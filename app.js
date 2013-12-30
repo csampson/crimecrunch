@@ -1,15 +1,16 @@
-var express = require('express'),
+var express  = require('express'),
     mongoose = require('mongoose'),
-    routes = require('./routes'),
-    http = require('http'),
-    path = require('path');
+    routes   = require('./routes'),
+    http     = require('http'),
+    path     = require('path');
 
 mongoose.connect('mongodb://localhost/crime_crunch');
 
 var app = express(),
-    db = mongoose.connection;
+    db  = mongoose.connection;
 
 app.set('port', process.env.PORT || 3000);
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
