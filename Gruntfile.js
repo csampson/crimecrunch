@@ -19,7 +19,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['**/*.scss', 'public/js/**/*.js', 'test/unit/*.js'],
+      files: ['**/*.scss', 'public/js/*.js', 'test/unit/*.js'],
       tasks: ['sass', 'karma:unit:run']
     }
   });

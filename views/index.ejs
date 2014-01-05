@@ -3,26 +3,32 @@
 <head>
   <meta charset='utf-8' />
   <title>CrimeCrunch</title>
-  <link rel='stylesheet' type='text/css' href='/css/app.css' />
+  <link href='/css/app.css' rel='stylesheet' type='text/css' />
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css' />
   <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js'></script>
   <script src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js'/></script>
-  <script src='/app.js'></script>
-  <script src='/controllers.js'></script>
-  <script src='/services.js'></script>
+  <script src='/js/app.js'></script>
+  <script src='/js/controllers.js'></script>
+  <script src='/js/services.js'></script>
 </head>
 <body>
-  <header class='page-header'>
-    <h1>CrimeCrunch</h1>
-    <p>Analyze crime numbers for a given area</p>
+   <header class='app-header'>
+    <h1 class='app-logo'>CrimeCrunch</h1>
+    <p class='app-description'>Analyze neighborhood crime numbers.</p>
   </header>
 
-  <div class='crime-list' data-ng-controller='IncidentsListController'>
-    <button data-ng-click='getIncidents()' type='button'>V</button>
+  <div class='app-content' data-ng-controller='IncidentsListController'>
+    <form class='search-incidents'>
+      <span class='search-incidents-field'>
+        <input type='text' placeholder='Enter a street address or intersection' />
+        <button class='entypo location' type='button' data-ng-click='getIncidents()'></button>
+      </span>
+    </form>
 
-    <ul class='incidents'>
+    <ul class='incidents' data-ng-show='incidents.length'>
       <li data-ng-repeat='incident in incidents' class='incident'>
-        <span class='incident-label'>{{incident.label}}</span>
         <span class='incident-count'>{{incident.count}}</span>
+        <span class='incident-label'>{{incident.label}}</span>
       </li>
     </ul>
   </div>
