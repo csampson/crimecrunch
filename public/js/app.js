@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('crimeCrunch', ['crimeCrunch.controllers', 'crimeCrunch.services']);
+angular.module('crimeCrunch', ['crimeCrunch.controllers', 'crimeCrunch.services', 'crimeCrunch.directives']);

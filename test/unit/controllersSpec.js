@@ -20,6 +20,14 @@ describe('crimeCrunch controllers', function() {
     it('should be able to fetch incidents', function() {
       $httpBackend.whenGET(/^\/incidents*/).respond({ Assault: 22 });
 
+      scope.getIncidents();
+      $httpBackend.flush();
+      expect(scope.incidents[0]).toEqual({ label: 'Assault', count: 22 });
+    });
+
+    it('should be able to fetch incidents by geolocation', function() {
+      $httpBackend.whenGET(/^\/incidents*/).respond({ Assault: 22 });
+
       // fake geolocation
       spyOn(geolocation, 'getPosition').andCallFake(function() {
         var defered = $q.defer();

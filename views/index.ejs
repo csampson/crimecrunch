@@ -7,9 +7,11 @@
   <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css' />
   <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js'></script>
   <script src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js'/></script>
+  <script src='//maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false'></script>
   <script src='/js/app.js'></script>
   <script src='/js/controllers.js'></script>
   <script src='/js/services.js'></script>
+  <script src='/js/directives.js'></script>
 </head>
 <body>
    <header class='app-header'>
@@ -20,8 +22,8 @@
   <div class='app-content' data-ng-controller='IncidentsListController'>
     <form class='search-incidents'>
       <span class='search-incidents-field'>
-        <input class='search-incidents-input' type='text' placeholder='Enter a street address or intersection' />
-        <button class='entypo location' type='button' data-ng-click='getIncidents()'></button>
+        <input class='search-incidents-input' data-location-autocomplete type='text' placeholder='Enter a street address or intersection' />
+        <button class='entypo location' type='button' data-ng-click='getIncidentsByLocation()'></button>
       </span>
     </form>
 
@@ -33,7 +35,7 @@
         </li>
       </ul>
 
-      <p class='incidents-timeline-note'>*Incidents from the last 6 months</p>
+      <p class='incidents-timeline-note'>*Incidents within 500m from the last 6 months</p>
     </div>
   </div>
 </body>
