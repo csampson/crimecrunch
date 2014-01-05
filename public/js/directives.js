@@ -5,6 +5,7 @@ angular.module('crimeCrunch.directives', [])
         var input = element[0];
 
         scope.gPlace = new google.maps.places.Autocomplete(input);
+        scope.gPlace.setComponentRestrictions({country:'us'});
 
         google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
           scope.getIncidentsByAddress();

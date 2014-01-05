@@ -23,6 +23,7 @@ angular.module('crimeCrunch.controllers', [])
       $scope.getIncidentsByLocation = function() {
         geolocation.getPosition().then(function(data) {
           $scope.coordinates = data;
+          $scope.address = 'My location';
           $scope.getIncidents();
         });
       };

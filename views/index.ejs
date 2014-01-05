@@ -22,7 +22,7 @@
   <div class='app-content' data-ng-controller='IncidentsListController'>
     <form class='search-incidents'>
       <span class='search-incidents-field'>
-        <input class='search-incidents-input' data-location-autocomplete type='text' placeholder='Enter a street address or intersection' />
+        <input class='search-incidents-input' data-ng-model='address' data-location-autocomplete type='text' placeholder='Enter a street address or intersection' />
         <button class='entypo location' type='button' data-ng-click='getIncidentsByLocation()'></button>
       </span>
     </form>
