@@ -20,17 +20,21 @@
   <div class='app-content' data-ng-controller='IncidentsListController'>
     <form class='search-incidents'>
       <span class='search-incidents-field'>
-        <input type='text' placeholder='Enter a street address or intersection' />
+        <input class='search-incidents-input' type='text' placeholder='Enter a street address or intersection' />
         <button class='entypo location' type='button' data-ng-click='getIncidents()'></button>
       </span>
     </form>
 
-    <ul class='incidents' data-ng-show='incidents.length'>
-      <li data-ng-repeat='incident in incidents' class='incident'>
-        <span class='incident-count'>{{incident.count}}</span>
-        <span class='incident-label'>{{incident.label}}</span>
-      </li>
-    </ul>
+    <div class='incidents' data-ng-show='incidents.length'>
+      <ul class='incidents-list'>
+        <li data-ng-repeat='incident in incidents' class='incident'>
+          <span class='incident-count'>{{incident.count}}</span>
+          <span class='incident-label'>{{incident.label}}</span>
+        </li>
+      </ul>
+
+      <p class='incidents-timeline-note'>*Incidents from the last 6 months</p>
+    </div>
   </div>
 </body>
 </html>
