@@ -27,7 +27,7 @@
 
     <div class='incidents' data-ng-show='incidents.length'>
       <ul class='incidents-list'>
-        <li data-ng-repeat='incident in incidents' class='incident'>
+        <li data-ng-repeat='incident in incidents | orderBy:"label"' class='incident'>
           <span class='incident-count'>{{incident.count}}</span>
           <span class='incident-label'>{{incident.label}}</span>
         </li>

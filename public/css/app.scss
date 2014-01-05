@@ -63,14 +63,15 @@
   .incidents-list {
     @include clearfix;
     list-style: none;
+    @include columns(3);
     padding: 0;
     margin: 0;
   }
 
   .incident {
-    width: 33.33333%;
+    width: 100%;
     margin-bottom: 1em;
-    float: left;
+    display: inline-block;
   }
 
   .incident-count {
