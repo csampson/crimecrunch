@@ -14,8 +14,8 @@ angular.module('crimeCrunch.controllers', [])
         var placeLocation = $scope.gPlace.getPlace().geometry.location;
 
         $scope.coordinates = {
-          longitude: placeLocation.ob,
-          latitude:  placeLocation.nb
+          longitude: placeLocation.d,
+          latitude:  placeLocation.b
         };
 
         $scope.getIncidents();
