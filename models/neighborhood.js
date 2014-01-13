@@ -14,15 +14,10 @@ var NeighborhoodSchema = new Schema({
 });
 
 NeighborhoodSchema.statics.findByPoint = function (points, callback) {
-  this.find({
-    geometry: { $geoIntersects: {
-      $geometry: {
-        type: 'Point',
-        coordinates:  [ points[0], points[1] ]
-      }
-    }}},
-    callback
-  );
+  this.where('geometry').intersects({
+    type: 'Point',
+    coordinates: [points[0], points[1]]
+  }).exec(callback);
 }
 
 var Neighborhood = mongoose.model('Neighborhood', NeighborhoodSchema);
