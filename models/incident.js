@@ -12,6 +12,17 @@ var IncidentSchema = new Schema({
   coordinates: { type: Array, index: '2dsphere' }
 });
 
+IncidentSchema.statics.findByPolygon = function(boundaries, callback) {
+  Incident.find({
+    coordinates: {
+      $geoWithin: {
+        $polygon: boundaries
+      }
+    }},
+    callback
+  );
+};
+
 var Incident = mongoose.model('Incident', IncidentSchema);
 
 module.exports = Incident;

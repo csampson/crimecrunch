@@ -1,8 +1,8 @@
-var express  = require('express'),
+var http     = require('http'),
+    path     = require('path'),
+    express  = require('express'),
     mongoose = require('mongoose'),
-    routes   = require('./routes'),
-    http     = require('http'),
-    path     = require('path');
+    routes   = require('./routes');
 
 mongoose.connect('mongodb://localhost/crime_crunch');
 

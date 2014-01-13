@@ -5,7 +5,8 @@ angular.module('crimeCrunch.controllers', [])
     function($scope, $http, geolocation) {
       $scope.getIncidents = function() {
         $http.get('/incidents', { params: $scope.coordinates }).success(function(response) {
-          $scope.incidents = _.map(response, function(count, crime) { return { label: crime, count: count }; });
+          $scope.neighborhood = response.neighborhood;
+          $scope.incidents = _.map(response.incidents, function(count, crime) { return { label: crime, count: count }; });
         });
       };
 

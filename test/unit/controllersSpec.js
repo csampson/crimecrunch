@@ -18,7 +18,7 @@ describe('crimeCrunch controllers', function() {
     }));
 
     it('should be able to fetch incidents', function() {
-      $httpBackend.whenGET(/^\/incidents*/).respond({ Assault: 22 });
+      $httpBackend.whenGET(/^\/incidents*/).respond({ incidents: { Assault: 22 } });
 
       scope.getIncidents();
       $httpBackend.flush();
@@ -26,7 +26,7 @@ describe('crimeCrunch controllers', function() {
     });
 
     it('should be able to fetch incidents by geolocation', function() {
-      $httpBackend.whenGET(/^\/incidents*/).respond({ Assault: 22 });
+      $httpBackend.whenGET(/^\/incidents*/).respond({ incidents: { Assault: 22 } });
 
       // fake geolocation
       spyOn(geolocation, 'getPosition').andCallFake(function() {
