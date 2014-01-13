@@ -25,19 +25,12 @@ describe('crimeCrunch controllers', function() {
       expect(scope.incidents[0]).toEqual({ label: 'Assault', count: 22 });
     });
 
-    it('should be able to fetch incidents by geolocation', function() {
-      $httpBackend.whenGET(/^\/incidents*/).respond({ incidents: { Assault: 22 } });
-
-      // fake geolocation
-      spyOn(geolocation, 'getPosition').andCallFake(function() {
-        var defered = $q.defer();
-        defered.resolve({ latitude: 90, longitude: 90 });
-        return defered.promise;
-      });
+    it('should be able to fetch neighborhood data', function() {
+      $httpBackend.whenGET(/^\/incidents*/).respond({ neighborhood: { name: 'Lower Garden District'} });
 
       scope.getIncidents();
       $httpBackend.flush();
-      expect(scope.incidents[0]).toEqual({ label: 'Assault', count: 22 });
+      expect(scope.neighborhood.name).toEqual('Lower Garden District');
     });
   });
 });
