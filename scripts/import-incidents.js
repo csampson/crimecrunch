@@ -28,7 +28,7 @@ function saveIncident(incident, callback) {
   incident.save(callback);
 }
 
-function fetchIncident(day, params, callback) {
+function fetchIncidents(day, params, callback) {
   params.db = day+'+00:00:00';
   params.de = day+'+23:59:00';
 
@@ -87,7 +87,7 @@ Incident.remove(function() {
 
       console.log('Fetching incidents for ' + day);
 
-      fetchIncident(day, params, callback);
+      fetchIncidents(day, params, callback);
     },
     function() {
       console.log('\nDone');
