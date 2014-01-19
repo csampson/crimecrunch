@@ -9,7 +9,13 @@ var IncidentSchema = new Schema({
   description: String,
   date: Date,
   location: String,
-  coordinates: { type: Array, index: '2dsphere' }
+  geometry: {
+    type: { type: String },
+    coordinates: {
+      type: Array,
+      index: '2dsphere'
+    }
+  }
 });
 
 IncidentSchema.statics.findByPolygon = function(boundaries, callback) {

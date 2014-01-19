@@ -3,7 +3,7 @@ var async = require('async'),
     querystring = require('querystring'),
     mongoose = require('mongoose'),
     moment = require('moment'),
-    proj4 = require('proj4js'),
+    proj4 = require('proj4'),
     Incident = require('../models/incident.js');
 
 require('twix');
@@ -22,7 +22,10 @@ function saveIncident(incident, callback) {
     description: incident.Description,
     date: incident.DateReported,
     location: incident.Location,
-    coordinates: [ coordinates[0], coordinates[1] ]
+    geometry: {
+      type: 'Point',
+      coordinates: [ coordinates[0], coordinates[1] ]
+    }
   });
 
   incident.save(callback);
