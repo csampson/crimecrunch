@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('crimeCrunch.directives', [])
   .directive('locationAutocomplete', function() {
     return {
