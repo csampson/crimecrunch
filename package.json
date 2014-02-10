@@ -1,18 +1,18 @@
 {
-  "name": "application-name",
+  "name": "CrimeCrunch",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "3.x",
-    "ejs": "*",
+    "express": "~3.4.8",
+    "ejs": "~0.8.5",
     "mongoose": "3.8.x",
-    "moment": "2.x",
-    "twix": "0.3.x",
-    "proj4js": "*",
-    "async": "*"
+    "moment": "~2.5.1",
+    "twix": "~0.3.0",
+    "async": "~0.2.10",
+    "proj4": "~2.1.0"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
