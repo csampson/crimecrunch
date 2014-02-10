@@ -18,8 +18,8 @@ var IncidentSchema = new Schema({
   }
 });
 
-IncidentSchema.statics.findByPolygon = function(boundaries, callback) {
-  Incident.where('coordinates').within({ polygon: boundaries }).exec(callback);
+IncidentSchema.statics.findWithinPolygon = function(geometry, callback) {
+  this.where('geometry').within().geometry(geometry).lean().exec(callback);
 };
 
 var Incident = mongoose.model('Incident', IncidentSchema);

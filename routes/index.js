@@ -16,16 +16,28 @@ exports.incidents = function(req, res) {
     // find user's neighborhood
     function(callback) {
       Neighborhood.findByPoint([ longitude, latitude ], function(error, neighborhoods) {
+        // TODO: handle fetch errors
+        if(error)
+          return;
+
         // TODO: handle zero neighborhoods found
-        neighborhood = { name: neighborhoods[0].name, boundaries: neighborhoods[0].geometry.coordinates[0] };
+        if(!neighborhoods)
+          return;
+
+        neighborhood = { name: neighborhoods[0].name, geometry: neighborhoods[0].geometry };
         callback();
       });
     },
     // find incidents within user's neighborhood
     function(callback) {
-      Incident.findByPolygon(neighborhood.boundaries, function(error, incidents) {
+      Incident.findWithinPolygon(neighborhood.geometry, function(error, incidents) {
+        // TODO: handle fetch errors
+        if(error)
+          return;
+
+        // TODO: handle zero incidents found
         if(!incidents)
-          return; // TODO: handle zero incidents found
+          return;
 
         // because I don't feel like getting aggregate + $geoNear to work right now
         incidents.forEach(function(incident) {
