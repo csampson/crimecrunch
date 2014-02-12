@@ -1,6 +1,5 @@
 module.exports = function(grunt) {
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
     sass: {
       options: {
         quiet: true
@@ -13,7 +12,7 @@ module.exports = function(grunt) {
     },
     karma: {
       unit: {
-        configFile: 'test/karma.conf.js',
+        configFile: 'test/unit/karma.conf.js',
         tasks: ['karma:unit:run'],
         background: true
       }
